@@ -1,3 +1,4 @@
+//The data for the cats
 var initalCats = [
 	{
 		clickCount: 0,
@@ -23,7 +24,6 @@ var initalCats = [
 ];
 
 var Cat = function(data){
-
 	this.clickCount = ko.observable(data.clickCount);
 	this.name = ko.observable(data.name);
 	this.imgSrc = ko.observable(data.imgSrc);
@@ -31,7 +31,7 @@ var Cat = function(data){
 	this.catLevel = ko.computed(function(){
 		var catLevel;
 		var clicks = this.clickCount();
-
+		//Status of cat change
 		if (clicks < 10) {
 			catLevel = 'Baby';
 		}else if (clicks < 20) {
@@ -46,8 +46,8 @@ var Cat = function(data){
 }
 
 var ViewModel = function() {
+	//a way to bypass the 'this' to correlate to ViewModel
 	var self = this;
-
 	this.catList = ko.observableArray([]);
 
 	initalCats.forEach(function(catItem){
@@ -61,6 +61,7 @@ var ViewModel = function() {
 		self.currentCat().clickCount(self.currentCat().clickCount() + 1);
 	};
 
+	//click to set the selected cat
 	this.clickCat = function(clickedCat){
 		self.currentCat(clickedCat);
 	};
