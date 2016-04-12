@@ -5,6 +5,12 @@
     <title>Cat Clicker w/ KnockOutjs</title>
 </head>
 <body>
+    <div class="cat-list">
+        <h2>Choose a cat</h2>
+        <ul data-bind="foreach: catList">
+            <li data-bind="text: name, click: $parent.clickCat"></li>
+        </ul>
+    </div>
     <div class="cat-View" data-bind="with: currentCat">
         <h1 data-bind="text: name"></h1>
         <div data-bind="text: clickCount"></div>
